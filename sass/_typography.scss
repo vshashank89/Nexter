@@ -1,0 +1,64 @@
+%heading {   // This is placeholder for the extends property
+    font-family: $font-display;
+    font-weight: 400;
+}
+
+.heading-1 {
+    @extend %heading;
+    font-size: 4.5rem;
+    color: $color-grey-light-1;
+    line-height: 1;
+}
+
+.heading-2 {
+    @extend %heading;
+
+    font-size: 4rem;
+    font-style: italic; // because we included this style in html.
+    line-height: 1; // to get rid of huge space between the lines.
+    
+    &--light { color: $color-grey-light-1 ;}
+    &--dark {color: $color-grey-dark-1;}
+}
+
+.heading-3 {
+    @extend %heading;
+
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    color: $color-primary;
+}
+
+.heading-4 {
+    @extend %heading;
+    font-size: 1.9rem;
+
+    &--light { color: $color-grey-light-1 ;}
+    &--dark {color: $color-grey-dark-1;}
+}
+
+.btn {
+
+    font-family: $font-display;
+    font-size: 1.7rem;
+
+    background-color: $color-primary;
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 1.8rem 3rem;
+
+    transition: all .2s;
+
+    &:hover {
+        background-color: $color-primary-dark;
+    }
+}
+
+// Margins 
+.mb-sm {margin-bottom: 2rem;}
+.mb-md {margin-bottom: 3rem;}
+.mb-lg {margin-bottom: 4rem;}
+.mb-hg {margin-bottom: 8rem;}

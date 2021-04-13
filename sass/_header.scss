@@ -1,0 +1,79 @@
+.header {
+    background-color: $color-grey-dark-1 ;
+    grid-column: full-start / col-end 6; // header starts from full start and spans the 6 cols of 8 col-grid.
+
+    background-image: linear-gradient(rgba($color-secondary,.9),rgba($color-secondary,.9)) , url(../img/hero.jpeg);
+    background-size: cover;
+    background-position: center; // To center the background-image.
+
+    display: grid;
+    grid-template-rows: 1fr min-content minmax(6rem , min-content) 1fr;
+
+    // So for responsive layout , Otherwise the grid column will be max-content.
+    grid-template-columns: minmax(min-content , max-content); /*This is because otherwise the column occupies extra space . so we say the content to 
+    occupy maximunm space it can without any line-break.*/
+    
+
+    justify-content: center; // This is to center the row tracks horizontally. and to center the logo.  
+    grid-row-gap: 1.5rem;
+    padding: 8rem;
+    padding-top: 4rem; 
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-column: full-start / full-end;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        padding: 5rem;
+    }
+
+    &__logo {
+        height: 3rem;
+        justify-self: center; // This doesnt center the logo exactly. 
+    }
+
+    &__btn {
+        justify-self: start;
+        align-self: start;
+    }
+
+    &__seenon-text {
+
+        // The ::before,::after pseudo elements and text will be the grid items. 
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr; // We use max-content here so that there is no line-break for the text.
+        grid-column-gap: 1.5rem;
+        align-items: center; // To align the lines and text vertically centered.
+
+        font-size: 1.6rem;
+        color: $color-grey-light-2;
+
+        &::before, 
+        &::after {
+            content: "";
+            height: 1px;
+            display: block; // for the elements to have a width display should be block.
+            background-color: currentColor; // currentColor gets the color of the text here. 
+        }
+
+    }
+
+    &__seenon-logos {
+
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        justify-items: center;
+        align-items: center; 
+        grid-column-gap: 3rem;
+
+        img {
+
+            // So for responsive layout and tp prevent the overflows as we decrease screen size we set max-height and max-width. 
+            max-height: 2.5rem; // We want the logos to have same height not width.
+            max-width: 100%;
+            filter: brightness(70%); // filter prop is used to style the images.  
+        }
+
+    }
+}
+

@@ -1,0 +1,47 @@
+.realtors {
+    background-color: $color-secondary;
+    grid-column: col-start 7 / full-end;
+    padding: 3rem;
+
+    // To center the h3 and realtors list horizontally and vertically we use grid.
+    display: grid;
+    align-content: center;
+    justify-content: center;
+
+    grid-row-gap: 2rem;
+    justify-items: center ;
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-column: full-start / full-end;
+        grid-row-gap: 3rem;
+    }
+
+
+    &__list {
+        display: grid;
+        grid-template-columns: min-content max-content; // min-content for images as we already declared width and for details no line-break.
+        grid-column-gap: 2rem;
+        grid-row-gap: 5vh; // We put the row gap in terms of viewport height so that the spacing b/w rows doesnt look weird.
+        align-items: center;
+
+        @media only screen and (max-width: $bp-medium) {
+            grid-template-columns: repeat(3, min-content max-content); // So we can have multiple tracks get repeated in the repeat() function.
+        }
+        
+        @media only screen and (max-width: $bp-small) {
+            grid-template-columns: min-content max-content;
+        }
+    }
+
+    &__img {
+        width: 7rem;
+        border-radius: 50%;
+        display: block; // Its always better to display images as blocks.
+    }
+
+    &__sold {
+        text-transform: uppercase;
+        color: $color-grey-light-2;
+        margin-top: -3px; // to move the text a little bit up.
+    }
+}

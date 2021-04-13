@@ -1,0 +1,51 @@
+.features {
+    //background-color: $color-grey-light-2;
+    grid-column: center-start / center-end;
+    margin: 15rem 0;
+
+    @supports (display: grid) {  
+    display: grid;
+    //grid-template-columns: repeat(3,1fr); This is not responsive .
+    grid-template-columns: repeat(auto-fit,minmax(25rem,1fr)); /* autofit and minmax() function its a great tool for responsive design in grids*/
+    grid-gap: 6rem; // 60px
+
+    align-items: start; // this is because,the grid items are by def set to stretch, which leads the last column grid items have a large gap. 
+    }
+
+}
+
+.feature {  // This feature class is reusable code .
+
+    // This is just to show how to do progressive enhancement i.e for the older browser versions without using CSS Grid.
+    float: left;
+    width: 33.333%;
+    margin-bottom: 6rem;
+
+    @supports (display: grid) {
+        width: auto;
+        margin-bottom: 0;
+    }    
+
+    display: grid;
+    grid-template-columns: min-content 1fr; // in max grid use cases we just specify grid-template-columns prop and rows are automa'lly defined.
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2.5rem;
+
+    
+    &__icon {
+        height: 4.5rem;
+        width: 4.5rem;
+        fill: $color-primary; // fill prop is used to change the color of svgs written in html.
+
+        /*grid-row: 1 / -1;  this doesnt work because -1 means the end of explicit grid row/column.
+         but here we didnt define rows, so the rows are implicit grids.*/
+         grid-row: 1/span 2; // this is used to span the icon across the 2 rows.
+         
+         transform: translateY(-1rem); // to place the icon aligned with h4. 
+    }
+
+    &__text {
+        font-size: 1.7rem;
+    }
+
+}
